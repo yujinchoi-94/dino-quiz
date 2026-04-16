@@ -10,22 +10,26 @@
   *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
 
 :root {
---jungle:#1a5c2a; --leaf:#2d8a45; --lime:#7ec850;
---amber:#f5a623; --terra:#c0522a; --cream:#fff8ef;
---bark:#5c3a1e; --sky:#d0f0ff; --dino-bg:#e8f5e1;
---shadow:rgba(28,60,20,.25); --r:22px;
+  --jungle:#1a5c2a; --leaf:#2d8a45; --lime:#7ec850;
+  --amber:#f5a623; --terra:#c0522a; --cream:#1a1008;
+  --bark:#f5d090; --sky:#1a2a15; --dino-bg:rgba(61,32,8,0.5);
+  --shadow:rgba(0,0,0,.5); --r:22px;
+  --earth:#7a4010; --gold:#f5a623; --card-bg:rgba(255,245,220,0.07);
+  --card-border:rgba(245,166,35,0.35);
 }
 
 html { scroll-behavior:smooth; }
 body {
-font-family:'Jua',sans-serif; background:var(--dino-bg);
-min-height:100vh; overflow-x:hidden; position:relative;
+  font-family:’Jua’,sans-serif;
+  background: linear-gradient(160deg,#1a0e05 0%,#3d2008 35%,#1a3d15 70%,#0d2008 100%);
+  background-attachment: fixed;
+  min-height:100vh; overflow-x:hidden; position:relative;
 }
 body::before {
-content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
-background:
-radial-gradient(ellipse 60% 40% at 20% 10%,rgba(126,200,80,.18) 0%,transparent 60%),
-radial-gradient(ellipse 50% 50% at 80% 90%,rgba(245,166,35,.15) 0%,transparent 55%);
+  content:’’; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 10%,rgba(245,166,35,.12) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 50% at 80% 90%,rgba(45,138,69,.10) 0%,transparent 55%);
 }
 
 .leaf-deco { position:fixed; opacity:.1; animation:sway 6s ease-in-out infinite; pointer-events:none; z-index:0; user-select:none; }
@@ -39,64 +43,69 @@ radial-gradient(ellipse 50% 50% at 80% 90%,rgba(245,166,35,.15) 0%,transparent 5
 .page.active{display:flex;}
 
 .card{
-background:var(--cream); border-radius:var(--r);
-box-shadow:0 8px 32px var(--shadow),0 2px 0 rgba(255,255,255,.7) inset;
+background:var(--card-bg); border:2px solid var(--card-border);
+border-radius:var(--r);
+box-shadow:0 8px 32px rgba(0,0,0,.5),0 2px 0 rgba(255,255,255,.06) inset;
 padding:32px 28px; width:100%; max-width:700px; position:relative; overflow:hidden;
 }
 .card::before{
-content:''; position:absolute; top:0;left:0;right:0; height:6px;
-background:linear-gradient(90deg,var(--leaf),var(--lime),var(--amber),var(--terra));
+content:’’; position:absolute; top:0;left:0;right:0; height:6px;
+background:linear-gradient(90deg,#7a4010,#f5a623,#2d8a45,#f5a623,#7a4010);
 border-radius:var(--r) var(--r) 0 0;
 }
 
-h1{font-size:clamp(2rem,6vw,3.2rem);color:var(--jungle);line-height:1.15;}
-h2{font-size:clamp(1.3rem,4vw,1.9rem);color:var(--jungle);line-height:1.4;}
-.subtitle{font-family:'Nanum Gothic',sans-serif;font-size:1rem;color:var(--leaf);font-weight:700;letter-spacing:.04em;}
+h1{font-size:clamp(2rem,6vw,3.2rem);color:#f5d090;line-height:1.15;text-shadow:2px 2px 0 rgba(0,0,0,.5),0 0 20px rgba(245,166,35,.4);}
+h2{font-size:clamp(1.3rem,4vw,1.9rem);color:#f5d090;line-height:1.4;text-shadow:1px 1px 0 rgba(0,0,0,.4);}
+.subtitle{font-family:’Nanum Gothic’,sans-serif;font-size:1rem;color:#a07040;font-weight:700;letter-spacing:.04em;}
 
 .btn{
 display:inline-flex;align-items:center;gap:8px;
 padding:16px 36px;border:none;border-radius:50px;
-font-family:'Jua',sans-serif;font-size:1.1rem;cursor:pointer;
+font-family:‘Jua’,sans-serif;font-size:1.1rem;cursor:pointer;
 transition:transform .15s,box-shadow .15s;text-decoration:none;
 }
 .btn:hover{transform:translateY(-3px);}
 .btn:active{transform:translateY(0);}
-.btn-primary{background:linear-gradient(135deg,var(--leaf),var(--jungle));color:#fff;box-shadow:0 6px 20px rgba(26,92,42,.4);}
-.btn-primary:hover{box-shadow:0 10px 28px rgba(26,92,42,.5);}
-.btn-amber{background:linear-gradient(135deg,var(--amber),#e08010);color:#fff;box-shadow:0 6px 20px rgba(192,82,42,.35);}
-.btn-outline{background:transparent;color:var(--jungle);border:3px solid var(--jungle);}
-.btn-outline:hover{background:var(--jungle);color:#fff;}
+.btn-primary{background:linear-gradient(135deg,#c06010,#f5a623,#e08010);color:#fff;box-shadow:0 6px 20px rgba(200,100,20,.5),inset 0 1px 0 rgba(255,255,255,.2);text-shadow:0 1px 2px rgba(0,0,0,.4);}
+.btn-primary:hover{box-shadow:0 10px 28px rgba(200,100,20,.6);}
+.btn-amber{background:linear-gradient(135deg,#a05010,#f5a623,#c07010);color:#fff;box-shadow:0 6px 20px rgba(192,82,42,.4),inset 0 1px 0 rgba(255,255,255,.15);}
+.btn-outline{background:transparent;color:#f5d090;border:3px solid rgba(245,166,35,.6);}
+.btn-outline:hover{background:rgba(245,166,35,.15);border-color:#f5a623;color:#f5d090;}
 
 .name-input{
-width:100%;padding:16px 20px;border:3px solid var(--leaf);border-radius:14px;
-font-family:'Jua',sans-serif;font-size:1.3rem;color:var(--bark);background:#fff;
-outline:none;transition:border-color .2s,box-shadow .2s;text-align:center;
+width:100%;padding:16px 20px;border:2px solid rgba(245,166,35,.4);border-radius:14px;
+font-family:’Jua’,sans-serif;font-size:1.3rem;color:rgba(255,220,150,.9);
+background:rgba(0,0,0,.3);outline:none;transition:border-color .2s,box-shadow .2s;text-align:center;
 }
-.name-input:focus{border-color:var(--amber);box-shadow:0 0 0 4px rgba(245,166,35,.2);}
-.name-input::placeholder{color:#aaa;}
+.name-input:focus{border-color:rgba(245,166,35,.8);box-shadow:0 0 0 4px rgba(245,166,35,.2);}
+.name-input::placeholder{color:rgba(255,200,100,.35);}
 
+/* progress */
 .progress-wrap{width:100%;max-width:700px;margin-bottom:16px;}
 .progress-label{display:flex;justify-content:space-between;font-size:.88rem;color:var(--bark);margin-bottom:6px;}
 .progress-bar-bg{background:rgba(26,92,42,.15);border-radius:50px;height:13px;overflow:hidden;}
 .progress-bar-fill{
-height:100%;background:linear-gradient(90deg,var(--leaf),var(--lime));
+height:100%;background:linear-gradient(90deg,#7a4010,#f5a623);
 border-radius:50px;transition:width .5s cubic-bezier(.4,0,.2,1);position:relative;
+box-shadow:0 0 10px rgba(245,166,35,.6);
 }
-.progress-bar-fill::after{content:'🦎';position:absolute;right:-8px;top:50%;transform:translateY(-50%);font-size:.9rem;}
+.progress-bar-fill::after{content:’🦎’;position:absolute;right:-8px;top:50%;transform:translateY(-50%);font-size:.9rem;}
 
+/* diff badge */
 .diff-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;}
 .diff-badge{display:inline-flex;align-items:center;gap:6px;padding:7px 18px;border-radius:50px;font-size:.9rem;font-weight:bold;transition:all .4s cubic-bezier(.34,1.56,.64,1);}
-.diff-easy  {background:#d4f0c0;color:#2d8a45;border:2px solid #2d8a45;}
-.diff-medium{background:#fff0c0;color:#e08010;border:2px solid #e08010;}
-.diff-hard  {background:#fde0d0;color:#c0522a;border:2px solid #c0522a;}
+.diff-easy  {background:rgba(45,138,69,.2); color:#a0e080;border:1px solid rgba(126,200,80,.5);}
+.diff-medium{background:rgba(245,166,35,.2);color:#f5d090;border:1px solid rgba(245,166,35,.5);}
+.diff-hard  {background:rgba(192,82,42,.2); color:#e08060;border:1px solid rgba(192,82,42,.5);}
 .diff-up  {animation:diffUp   .5s cubic-bezier(.34,1.56,.64,1);}
 .diff-down{animation:diffDown .5s cubic-bezier(.34,1.56,.64,1);}
 @keyframes diffUp  {0%{transform:scale(1)}50%{transform:scale(1.28) translateY(-4px)}100%{transform:scale(1)}}
 @keyframes diffDown{0%{transform:scale(1)}50%{transform:scale(.84)  translateY(4px)} 100%{transform:scale(1)}}
 
+/* toast */
 .diff-toast{
 position:fixed;top:24px;left:50%;transform:translateX(-50%);
-padding:12px 28px;border-radius:50px;font-family:'Jua',sans-serif;font-size:1rem;
+padding:12px 28px;border-radius:50px;font-family:‘Jua’,sans-serif;font-size:1rem;
 z-index:999;pointer-events:none;
 animation:toastIn .4s ease,toastOut .4s ease 1.8s forwards;white-space:nowrap;
 }
@@ -105,6 +114,7 @@ animation:toastIn .4s ease,toastOut .4s ease 1.8s forwards;white-space:nowrap;
 @keyframes toastIn {from{opacity:0;transform:translateX(-50%) translateY(-16px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 @keyframes toastOut{from{opacity:1}to{opacity:0;transform:translateX(-50%) translateY(-12px)}}
 
+/* q-stars */
 .q-stars{display:flex;gap:6px;}
 .q-star{font-size:1.1rem;filter:grayscale(1) opacity(.3);transition:all .3s;}
 .q-star.done-correct,.q-star.done-wrong,.q-star.current{filter:none;}
@@ -113,33 +123,35 @@ animation:toastIn .4s ease,toastOut .4s ease 1.8s forwards;white-space:nowrap;
 
 .streak-bar{display:flex;align-items:center;gap:6px;font-size:.85rem;color:var(--bark);}
 
+/* ── options: only hover on pointer devices ── */
 .options-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px;}
 @media(max-width:500px){.options-grid{grid-template-columns:1fr;}}
 .option-btn{
-padding:18px 16px;border:3px solid #dde8d5;border-radius:16px;
-background:#fff;font-family:'Jua',sans-serif;font-size:1rem;
-color:var(--bark);cursor:pointer;text-align:left;
-transition:all .2s;line-height:1.4;
-touch-action:manipulation;
+padding:18px 16px;border:2px solid rgba(245,166,35,.25);border-radius:16px;
+background:rgba(61,32,8,.6);font-family:’Jua’,sans-serif;font-size:1rem;
+color:#d4a060;cursor:pointer;text-align:left;
+transition:all .2s;line-height:1.4;touch-action:manipulation;
 }
 @media(hover:hover){
-.option-btn:hover:not(:disabled){border-color:var(--leaf);background:var(--dino-bg);transform:scale(1.02);}
+.option-btn:hover:not(:disabled){border-color:rgba(245,166,35,.6);background:rgba(61,32,8,.9);transform:scale(1.02);}
 }
-.option-btn.correct{border-color:var(--leaf);background:linear-gradient(135deg,#e6f7e6,#d0f0d0);color:var(--jungle);}
-.option-btn.wrong  {border-color:var(--terra);background:linear-gradient(135deg,#fde8e0,#fcd5c4);color:var(--terra);}
+.option-btn.correct{border-color:rgba(45,138,69,.6);background:rgba(45,138,69,.25);color:#80e090;}
+.option-btn.wrong  {border-color:rgba(192,82,42,.6);background:rgba(192,82,42,.25);color:#e08060;}
 .option-btn:disabled{cursor:default;transform:none!important;}
 
 .explanation{
-margin-top:18px;padding:16px 20px;border-radius:14px;
-background:linear-gradient(135deg,var(--sky),#e0f4ff);
-border-left:5px solid #4ab0d9;
-font-family:'Nanum Gothic',sans-serif;font-size:.93rem;color:#1a4a6e;line-height:1.6;
+margin-top:18px;padding:16px 20px;border-radius:0 8px 8px 0;
+background:rgba(20,60,20,.5);
+border-left:5px solid #2d8a45;
+font-family:’Nanum Gothic’,sans-serif;font-size:.93rem;color:#a0d0a0;line-height:1.6;
 animation:fadeIn .4s ease;display:none;
 }
 .explanation.show{display:block;}
 
+/* quiz card during animation — block pointer events */
 .quiz-loading{pointer-events:none!important;}
 
+/* score */
 .score-circle{
 width:150px;height:150px;border-radius:50%;
 display:flex;align-items:center;justify-content:center;
@@ -153,16 +165,16 @@ font-size:2rem;color:var(--jungle);
 .score-circle-inner small{font-size:.8rem;color:var(--leaf);}
 
 .rank-badge{display:inline-flex;align-items:center;gap:10px;padding:12px 28px;border-radius:50px;font-size:1.15rem;font-weight:bold;margin:14px 0;}
-.rank-beginner{background:linear-gradient(135deg,#cce5ff,#a8d4ff);color:#1a3a6b;}
-.rank-explorer{background:linear-gradient(135deg,#d4f0c0,#b0e090);color:#1a5c2a;}
-.rank-expert  {background:linear-gradient(135deg,#fff0c0,#ffd966);color:#5c3a1e;}
-.rank-hero    {background:linear-gradient(135deg,#ffd6e0,#ffb3c6);color:#6b1a2a;}
-.rank-doctor  {background:linear-gradient(135deg,#e8d5ff,#d0a8ff);color:#3a1a6b;}
+.rank-beginner{background:rgba(30,60,120,.35);color:#a0c0ff;border:1px solid rgba(100,150,255,.4);}
+.rank-explorer{background:rgba(20,80,40,.35); color:#80e090;border:1px solid rgba(80,200,100,.4);}
+.rank-expert  {background:rgba(100,60,10,.35); color:#f5d090;border:1px solid rgba(245,166,35,.5);}
+.rank-hero    {background:rgba(120,20,50,.35); color:#ffb0c8;border:1px solid rgba(255,120,160,.4);}
+.rank-doctor  {background:rgba(60,20,100,.35); color:#d0a0ff;border:1px solid rgba(180,100,255,.4);}
 
 .history-row{display:flex;gap:8px;justify-content:center;margin:16px 0;flex-wrap:wrap;}
-.h-chip{padding:5px 13px;border-radius:50px;font-family:'Nanum Gothic',sans-serif;font-size:.78rem;font-weight:700;display:flex;align-items:center;gap:4px;}
-.h-chip.correct{background:#d4f0c0;color:#2d8a45;}
-.h-chip.wrong  {background:#fde0d0;color:#c0522a;}
+.h-chip{padding:5px 13px;border-radius:50px;font-family:’Nanum Gothic’,sans-serif;font-size:.78rem;font-weight:700;display:flex;align-items:center;gap:4px;}
+.h-chip.correct{background:rgba(45,138,69,.3);color:#80e090;border:1px solid rgba(126,200,80,.5);}
+.h-chip.wrong  {background:rgba(192,82,42,.3);color:#e08060;border:1px solid rgba(200,100,60,.5);}
 
 #certCanvas{border-radius:16px;box-shadow:0 10px 40px rgba(28,60,20,.35);max-width:100%;height:auto;display:block;margin:0 auto;}
 
@@ -185,11 +197,18 @@ font-size:2rem;color:var(--jungle);
 .text-center{text-align:center;}
 .site-footer{
 position:fixed;bottom:0;left:0;right:0;text-align:center;
-padding:8px;font-size:.78rem;color:rgba(26,92,42,.5);
-background:rgba(232,245,225,.85);backdrop-filter:blur(4px);z-index:100;
+padding:8px;font-size:.78rem;color:rgba(212,160,96,.6);
+background:rgba(26,14,5,.85);backdrop-filter:blur(4px);z-index:100;
+border-top:1px solid rgba(245,166,35,.15);
 }
 @media(max-width:480px){.card{padding:24px 16px;}.btn{padding:14px 26px;font-size:1rem;}}
+
+.deco-divider{display:flex;align-items:center;gap:8px;margin:14px 0;}
+.deco-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(245,166,35,.4),transparent);}
+.deco-icon{color:#a07040;font-size:.8rem;}
+.explorer-caption{font-size:.65rem;color:#a07040;letter-spacing:3px;text-transform:uppercase;margin-top:2px;}
 </style>
+
 </head>
 <body>
 
@@ -198,11 +217,15 @@ background:rgba(232,245,225,.85);backdrop-filter:blur(4px);z-index:100;
 <div class="leaf-deco">🌴</div>
 <div class="leaf-deco">🍀</div>
 
+<!-- ── PAGE 1: LANDING ── -->
+
 <section class="page active" id="page-landing">
   <div class="card text-center fade-in" style="margin-top:40px;">
     <div class="dino-parade"><span>🦕</span><span>🦖</span><span>🦕</span><span>🦖</span></div>
     <h1 style="margin:8px 0 4px;">공룡 탐험대! 🌿</h1>
     <p class="subtitle">공룡 전문가 자격증 발급 센터</p>
+    <p class="explorer-caption">DINOSAUR EXPLORER CERTIFICATION CENTER</p>
+    <div class="deco-divider"><span class="deco-line"></span><span class="deco-icon">✦</span><span class="deco-line"></span></div>
     <div style="margin:24px 0 8px;">
       <p style="font-family:'Nanum Gothic',sans-serif;color:var(--bark);font-size:.95rem;margin-bottom:18px;line-height:1.85;">
         🎉 공룡 퀴즈를 모두 풀면 <strong style="color:var(--jungle);">나만의 자격증</strong>을 받을 수 있어요!<br>
@@ -214,7 +237,7 @@ background:rgba(232,245,225,.85);backdrop-filter:blur(4px);z-index:100;
     <div style="margin-top:20px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
       <button class="btn btn-primary" onclick="startQuiz()">🦖 탐험 시작하기!</button>
     </div>
-    <div style="margin-top:26px;padding:18px;background:var(--dino-bg);border-radius:14px;">
+    <div style="margin-top:26px;padding:18px;background:rgba(61,32,8,.5);border:1px solid rgba(245,166,35,.2);border-left:3px solid #f5a623;border-radius:14px;">
       <p style="font-family:'Nanum Gothic',sans-serif;font-size:.88rem;color:var(--leaf);line-height:1.9;">
         🌟 퀴즈는 총 <strong>5문제</strong>예요<br>
         🧩 <strong>적응형 난이도</strong> — 실력에 맞게 문제가 달라져요<br>
@@ -230,6 +253,8 @@ background:rgba(232,245,225,.85);backdrop-filter:blur(4px);z-index:100;
     </div>
   </div>
 </section>
+
+<!-- ── PAGE 2: QUIZ ── -->
 
 <section class="page" id="page-quiz">
   <div class="progress-wrap">
@@ -254,6 +279,8 @@ background:rgba(232,245,225,.85);backdrop-filter:blur(4px);z-index:100;
   </div>
 </section>
 
+<!-- ── PAGE 3: RESULT ── -->
+
 <section class="page" id="page-result">
   <div class="card text-center">
     <h2 style="margin-bottom:6px;">결과 발표! 🎊</h2>
@@ -272,6 +299,8 @@ background:rgba(232,245,225,.85);backdrop-filter:blur(4px);z-index:100;
   </div>
 </section>
 
+<!-- ── PAGE 4: CERTIFICATE ── -->
+
 <section class="page" id="page-cert">
   <div class="card text-center">
     <h2 style="margin-bottom:4px;">🎉 축하해요!</h2>
@@ -279,7 +308,6 @@ background:rgba(232,245,225,.85);backdrop-filter:blur(4px);z-index:100;
     <canvas id="certCanvas" width="700" height="490"></canvas>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px;">
       <button class="btn btn-primary" onclick="downloadCert()">⬇️ 자격증 저장하기</button>
-      <button class="btn btn-outline" onclick="showPage('page-result')">← 결과로 돌아가기</button>
       <button class="btn btn-outline" onclick="restartQuiz()">🔄 처음으로</button>
     </div>
     <p style="font-family:'Nanum Gothic',sans-serif;font-size:.8rem;color:#aaa;margin-top:14px;">이미지를 꾹 누르면 저장할 수도 있어요 📱</p>
@@ -289,37 +317,273 @@ background:rgba(232,245,225,.85);backdrop-filter:blur(4px);z-index:100;
 <footer class="site-footer">🦕 공룡 탐험대 — 공룡탐험 위원회 공식 자격증 발급 센터</footer>
 
 <script>
+/* ==============================================================
+   QUESTION BANK  —  diff: 1=쉬움 / 2=보통 / 3=어려움
+   ✅ NO per-question emojis (removed hint problem)
+============================================================== */
+/* 총 50문제: 쉬움 17, 보통 17, 어려움 16 */
 const BANK = [
-  { id:'e1', diff:1, q:'티라노사우루스 렉스(T-Rex)는 무엇을 먹었을까요?', o:['풀과 나뭇잎','다른 공룡을 잡아먹었어요','물고기만 먹었어요','과일과 열매'], a:1, ex:'🔍 티라노사우루스는 거대한 이빨로 다른 공룡을 잡아먹는 육식공룡이에요! "렉스"는 라틴어로 "왕"이라는 뜻이랍니다. 🦷' },
-  { id:'e2', diff:1, q:'공룡은 어떻게 태어났을까요?', o:['새끼를 낳았어요','알에서 태어났어요','땅에서 솟아났어요','강에서 헤엄쳐 왔어요'], a:1, ex:'🐣 공룡은 새나 거북이처럼 알에서 태어났어요! 땅속에서 공룡 알 화석이 많이 발견됐답니다. 🥚' },
-  { id:'e3', diff:1, q:'브라키오사우루스는 왜 목이 그렇게 길었을까요?', o:['수영을 잘 하려고','높은 나무의 잎을 먹으려고','빨리 달리려고','천적을 무서워서'], a:1, ex:'🌳 높은 나무 꼭대기 잎을 먹기 위해 목이 길어졌어요! 키가 무려 13미터 — 4층 건물만큼 높아요! 😲' },
-  { id:'e4', diff:1, q:'초식공룡이 주로 먹은 것은 무엇일까요?', o:['다른 공룡','물고기','식물과 나뭇잎','곤충'], a:2, ex:'🌱 초식공룡은 풀, 나뭇잎, 열매 같은 식물을 먹었어요. 브라키오사우루스, 이구아노돈이 대표적이에요! 🍃' },
-  { id:'e5', diff:1, q:'스테고사우루스의 가장 큰 특징은 무엇일까요?', o:['날개가 달려있어요','등에 커다란 뼈 판이 있어요','머리에 뿔이 3개예요','꼬리가 매우 짧아요'], a:1, ex:'🦕 스테고사우루스는 등에 삼각형 뼈 판이 줄지어 있고 꼬리에는 날카로운 가시가 있어요! 이 뼈 판으로 체온을 조절했을 것으로 보여요. 🌡️' },
-  { id:'e6', diff:1, q:'공룡이 살았던 시대를 무엇이라고 부를까요?', o:['신생대','중생대','고생대','현생대'], a:1, ex:'🌍 중생대(약 2억 5천만~6,600만 년 전)는 공룡이 지배한 시대예요! 트라이아스기, 쥐라기, 백악기로 나뉜답니다. ⏳' },
-  { id:'e7', diff:1, q:'공룡의 뼈가 땅속에서 굳어서 된 것을 무엇이라고 할까요?', o:['화석','조각','광석','돌멩이'], a:0, ex:'🗿 화석은 오래전 생물의 흔적이 돌처럼 굳어서 보존된 거예요! 공룡 뼈 화석 덕분에 우리가 공룡을 연구할 수 있답니다. 🔍' },
-  { id:'e8', diff:1, q:'아파토사우루스는 어떤 특징이 있을까요?', o:['등에 뼈 판이 있어요','목과 꼬리가 매우 길어요','이빨이 칼처럼 날카로워요','네 다리가 짧아요'], a:1, ex:'🦕 아파토사우루스(옛 이름: 브론토사우루스)는 브라키오사우루스처럼 목과 꼬리가 엄청나게 길고 몸집도 거대한 초식공룡이에요! 🌿' },
-  { id:'m1', diff:2, q:'공룡이 지구에서 사라진 때는 약 언제일까요?', o:['1만 년 전','약 6,600만 년 전','1억 년 전','1,000년 전'], a:1, ex:'☄️ 약 6,600만 년 전 거대한 운석이 충돌해 공룡이 멸종했어요. 하지만 새가 공룡의 직계 후손이에요! 🐦' },
-  { id:'m2', diff:2, q:'달리기가 가장 빠른 공룡은 어느 것일까요?', o:['브라키오사우루스','안킬로사우루스','오르니토미무스','트리케라톱스'], a:2, ex:'💨 오르니토미무스는 타조처럼 생겼고 시속 60~70km로 달릴 수 있었어요. 자동차만큼 빠르죠! 🏃‍♂️' },
-  { id:'m3', diff:2, q:'트리케라톱스에는 뿔이 몇 개 있었을까요?', o:['1개','2개','3개','4개'], a:2, ex:'🔱 "Tri"는 숫자 3을 뜻해요! 이마에 2개, 코 위에 1개, 총 3개의 뿔이 있었답니다. 🦏' },
-  { id:'m4', diff:2, q:'안킬로사우루스는 어떻게 천적으로부터 몸을 지켰을까요?', o:['독을 뿜었어요','딱딱한 갑옷 등껍질과 꼬리 망치로 싸웠어요','빠르게 달아났어요','큰 소리로 겁줬어요'], a:1, ex:'🛡️ 온몸이 갑옷 같은 뼈로 덮여 있었고, 꼬리 끝에 뼈 망치가 있었어요! T-Rex도 무서워할 만큼 강력했답니다. 💥' },
-  { id:'m5', diff:2, q:'스피노사우루스가 특히 즐겨 먹은 먹이는 무엇일까요?', o:['풀과 열매','작은 포유류','물고기','곤충'], a:2, ex:'🐟 스피노사우루스는 강가에 살며 주로 물고기를 잡아먹었어요! 악어처럼 생긴 긴 주둥이가 딱 맞았죠. 🌊' },
-  { id:'m6', diff:2, q:'프테라노돈(Pteranodon)은 공룡일까요?', o:['네, 하늘을 나는 공룡이에요','아니요, 익룡이라는 별개의 파충류예요','포유류예요','새의 직접적인 조상이에요'], a:1, ex:'🦅 프테라노돈은 날개가 있지만 공룡이 아닌 익룡(翼龍)이에요! 공룡과 같은 시대에 살았지만 다른 종류랍니다. 🪶' },
-  { id:'m7', diff:2, q:'공룡 이름에 자주 붙는 "-사우루스(-saurus)"는 무슨 뜻일까요?', o:['무서운 이빨','도마뱀','공룡의 왕','화석'], a:1, ex:'🔤 "-사우루스"는 그리스어로 "도마뱀"이라는 뜻이에요! "디노사우루스(Dinosaurus)"는 "무시무시한 도마뱀"이라는 의미랍니다. 📖' },
-  { id:'m8', diff:2, q:'스테고사우루스 등의 뼈 판(plate)은 어떤 기능을 했을까요?', o:['적을 공격하는 무기','체온 조절과 외모 과시에 쓰였어요','날개처럼 날 수 있었어요','물속에서 헤엄치는 지느러미였어요'], a:1, ex:'🌡️ 과학자들은 등판이 열을 흡수·방출해 체온을 조절하고, 짝을 유인하는 과시용으로도 쓰였다고 추측해요! 🎨' },
-  { id:'h1', diff:3, q:'스피노사우루스와 티라노사우루스 중 몸이 더 컸던 공룡은 어느 쪽일까요?', o:['티라노사우루스','스피노사우루스','둘의 크기가 같아요','알 수 없어요'], a:1, ex:'📏 스피노사우루스는 약 15~18m로, T-Rex(약 12m)보다 훨씬 컸어요! 지금까지 발견된 육식공룡 중 가장 길었답니다. 🦖' },
-  { id:'h2', diff:3, q:'벨로시랍토르의 실제 크기는 어느 정도였을까요?', o:['사람보다 훨씬 컸어요','칠면조나 오리 정도 크기였어요','코끼리만 했어요','말 정도 크기였어요'], a:1, ex:'🔬 영화 속 벨로시랍토르는 크게 묘사됐지만 실제론 칠면조만 했어요! 영화 속 크기는 더 큰 친척 데이노니쿠스에 가깝답니다. 🎬' },
-  { id:'h3', diff:3, q:'"공룡(Dinosauria)"이라는 이름을 처음 만든 과학자는 누구일까요?', o:['찰스 다윈','리처드 오웬','메리 에닝','루이스 알바레즈'], a:1, ex:'🔭 영국 과학자 리처드 오웬이 1842년 "공룡(Dinosauria)"이라는 이름을 처음 붙였어요! 그리스어로 "무시무시한 도마뱀"이란 뜻이에요. 📚' },
-  { id:'h4', diff:3, q:'최신 연구에 따르면 대부분의 공룡은 어떤 체온 유형이었을까요?', o:['냉혈동물(파충류처럼 체온 조절 못 함)','온혈동물(새·포유류처럼 체온 유지)','체온이 아예 없었어요','계절마다 달라졌어요'], a:1, ex:'🌡️ 최근 연구에서 많은 공룡이 온혈동물에 가까웠다는 증거가 나왔어요! 그래서 그렇게 빠르고 활발하게 움직일 수 있었던 거예요. 🔥' },
-  { id:'h5', diff:3, q:'현재 살아있는 동물 중 공룡과 가장 가까운 친척은 무엇일까요?', o:['악어','새','도마뱀','상어'], a:1, ex:'🐦 새는 수각류 공룡(벨로시랍토르, T-Rex 등)에서 직접 진화했어요! "살아있는 공룡"이라고도 불린답니다. 깃털 달린 공룡 화석도 발견됐어요! 🧬' },
-  { id:'h6', diff:3, q:'현재까지 알려진 가장 오래된 공룡의 이름은 무엇일까요?', o:['티라노사우루스','벨로시랍토르','에오랍토르','이구아노돈'], a:2, ex:'🌋 에오랍토르(Eoraptor)는 약 2억 3천만 년 전 살았던 가장 오래된 공룡 중 하나예요! "새벽의 약탈자"라는 뜻이랍니다. 🌅' },
-  { id:'h7', diff:3, q:'어룡(이크티오사우루스)과 수장룡(플레시오사우루스)은 공룡일까요?', o:['네, 바다 공룡이에요','아니요, 공룡이 아닌 별개의 파충류예요','포유류예요','익룡과 같은 종류예요'], a:1, ex:'🌊 어룡·수장룡은 공룡과 같은 시대에 살았지만 완전히 다른 파충류예요! 세 그룹은 모두 중생대에 번성했지만 서로 다른 계통이랍니다. 🔬' },
-  { id:'h8', diff:3, q:'용각류(긴 목 공룡) 일부가 소화를 돕기 위해 실제로 한 행동은?', o:['하루 종일 물속에 있었어요','작은 돌(위석)을 삼켜 소화를 도왔어요','특별한 식물만 먹었어요','거꾸로 매달려 잤어요'], a:1, ex:'🪨 용각류 공룡들은 이빨이 나뭇잎을 갈기에 약해서 위석(gastroliths)이라는 작은 돌을 삼켜 위 속에서 음식을 갈았어요! 닭의 모래주머니와 비슷한 원리예요. 🐔' },
+
+  /* ── EASY (17) ─────────────────────────────── */
+  { id:'e1', diff:1,
+    q:'티라노사우루스 렉스(T-Rex)는 무엇을 먹었을까요?',
+    o:['풀과 나뭇잎','다른 공룡을 잡아먹었어요','물고기만 먹었어요','과일과 열매'],
+    a:1, ex:'🔍 티라노사우루스는 거대한 이빨로 다른 공룡을 잡아먹는 육식공룡이에요! "렉스"는 라틴어로 "왕"이라는 뜻이랍니다. 🦷' },
+
+  { id:'e2', diff:1,
+    q:'공룡은 어떻게 태어났을까요?',
+    o:['새끼를 낳았어요','알에서 태어났어요','땅에서 솟아났어요','강에서 헤엄쳐 왔어요'],
+    a:1, ex:'🐣 공룡은 새나 거북이처럼 알에서 태어났어요! 땅속에서 공룡 알 화석이 많이 발견됐답니다. 🥚' },
+
+  { id:'e3', diff:1,
+    q:'브라키오사우루스는 왜 목이 그렇게 길었을까요?',
+    o:['수영을 잘 하려고','높은 나무의 잎을 먹으려고','빨리 달리려고','천적을 무서워서'],
+    a:1, ex:'🌳 높은 나무 꼭대기 잎을 먹기 위해 목이 길어졌어요! 키가 무려 13미터 — 4층 건물만큼 높아요! 😲' },
+
+  { id:'e4', diff:1,
+    q:'초식공룡이 주로 먹은 것은 무엇일까요?',
+    o:['다른 공룡','물고기','식물과 나뭇잎','곤충'],
+    a:2, ex:'🌱 초식공룡은 풀, 나뭇잎, 열매 같은 식물을 먹었어요. 브라키오사우루스, 이구아노돈이 대표적이에요! 🍃' },
+
+  { id:'e5', diff:1,
+    q:'스테고사우루스의 가장 큰 특징은 무엇일까요?',
+    o:['날개가 달려있어요','등에 커다란 뼈 판이 있어요','머리에 뿔이 3개예요','꼬리가 매우 짧아요'],
+    a:1, ex:'🦕 스테고사우루스는 등에 삼각형 뼈 판이 줄지어 있고 꼬리에는 날카로운 가시가 있어요! 이 뼈 판으로 체온을 조절했을 것으로 보여요. 🌡️' },
+
+  { id:'e6', diff:1,
+    q:'공룡이 살았던 시대를 무엇이라고 부를까요?',
+    o:['신생대','중생대','고생대','현생대'],
+    a:1, ex:'🌍 중생대(약 2억 5천만~6,600만 년 전)는 공룡이 지배한 시대예요! 트라이아스기, 쥐라기, 백악기로 나뉜답니다. ⏳' },
+
+  { id:'e7', diff:1,
+    q:'공룡의 뼈가 땅속에서 굳어서 된 것을 무엇이라고 할까요?',
+    o:['화석','조각','광석','돌멩이'],
+    a:0, ex:'🗿 화석은 오래전 생물의 흔적이 돌처럼 굳어서 보존된 거예요! 공룡 뼈 화석 덕분에 우리가 공룡을 연구할 수 있답니다. 🔍' },
+
+  { id:'e8', diff:1,
+    q:'아파토사우루스는 어떤 특징이 있을까요?',
+    o:['등에 뼈 판이 있어요','목과 꼬리가 매우 길어요','이빨이 칼처럼 날카로워요','네 다리가 짧아요'],
+    a:1, ex:'🦕 아파토사우루스(옛 이름: 브론토사우루스)는 브라키오사우루스처럼 목과 꼬리가 엄청나게 길고 몸집도 거대한 초식공룡이에요! 🌿' },
+
+  { id:'e9', diff:1,
+    q:'날아다닌 파충류 "익룡"의 대표적인 이름은 무엇일까요?',
+    o:['이구아노돈','프테라노돈','안킬로사우루스','스테고사우루스'],
+    a:1, ex:'🦅 프테라노돈은 날개를 펼치면 최대 7m에 달하는 거대한 익룡이에요! 공룡은 아니지만 같은 시대에 하늘을 날았답니다. 🌤️' },
+
+  { id:'e10', diff:1,
+    q:'공룡의 직계 후손으로 지금도 살아있는 동물은 무엇일까요?',
+    o:['악어','거북이','새','도마뱀'],
+    a:2, ex:'🐦 새는 수각류 공룡에서 직접 진화한 살아있는 공룡이에요! 치킨을 먹으면 공룡을 먹는 셈이랍니다. 😄' },
+
+  { id:'e11', diff:1,
+    q:'티라노사우루스의 앞다리는 어떤 특징이 있을까요?',
+    o:['매우 길고 강해요','짧고 작아요','날개처럼 생겼어요','없었어요'],
+    a:1, ex:'💪 T-Rex의 앞다리는 몸집에 비해 매우 짧고 작았어요! 하지만 근육이 강해 먹이를 잡는 데 쓰였을 것으로 보여요. 🦖' },
+
+  { id:'e12', diff:1,
+    q:'공룡 화석을 연구하는 과학자를 무엇이라고 부를까요?',
+    o:['천문학자','고생물학자','지질학자','해양학자'],
+    a:1, ex:'🔬 고생물학자(Paleontologist)는 화석을 통해 옛날 생물을 연구해요! 공룡 화석을 발굴하고 복원하는 멋진 직업이랍니다. 🦴' },
+
+  { id:'e13', diff:1,
+    q:'공룡 중 가장 긴 뿔을 가진 것으로 유명한 공룡은?',
+    o:['스테고사우루스','벨로시랍토르','트리케라톱스','이구아노돈'],
+    a:2, ex:'🔱 트리케라톱스는 이마의 뿔 2개가 최대 1m가 넘을 정도로 길었어요! 방패 같은 프릴(목 주변 뼈)도 인상적이에요. 🛡️' },
+
+  { id:'e14', diff:1,
+    q:'공룡이 사라진 주된 원인으로 가장 유력한 것은?',
+    o:['홍수','거대 운석 충돌','화산 폭발만','인간의 사냥'],
+    a:1, ex:'☄️ 약 6,600만 년 전 지름 10km짜리 운석이 멕시코 유카탄 반도에 충돌했어요! 이로 인한 기후 변화로 공룡이 멸종했답니다. 💥' },
+
+  { id:'e15', diff:1,
+    q:'초식공룡인 이구아노돈의 특징은 무엇일까요?',
+    o:['등에 날카로운 칼이 있어요','엄지손가락에 뾰족한 가시가 있어요','꼬리에 독침이 있어요','머리에 긴 볏이 있어요'],
+    a:1, ex:'👍 이구아노돈은 엄지손가락이 뾰족한 가시 모양이에요! 처음 발견됐을 때 과학자들이 코뿔처럼 생각했을 정도로 독특하답니다. 🦎' },
+
+  { id:'e16', diff:1,
+    q:'공룡 발자국이 굳어서 만들어진 화석을 무엇이라고 할까요?',
+    o:['알 화석','족적 화석','이빨 화석','피부 화석'],
+    a:1, ex:'👣 족적 화석(Trace Fossil)은 공룡 발자국이 진흙에 찍힌 뒤 굳어서 보존된 거예요! 이를 통해 공룡이 어떻게 걸었는지 알 수 있어요. 🔍' },
+
+  { id:'e17', diff:1,
+    q:'초식공룡과 육식공룡 중 지구에 더 많이 살았던 것은?',
+    o:['육식공룡','초식공룡','비슷했어요','알 수 없어요'],
+    a:1, ex:'🌿 먹이 사슬의 법칙! 초식공룡이 훨씬 많아야 육식공룡이 먹고 살 수 있어요. 초식공룡이 압도적으로 많았답니다. 🍃' },
+
+  /* ── MEDIUM (17) ──────────────────────────── */
+  { id:'m1', diff:2,
+    q:'공룡이 지구에서 사라진 때는 약 언제일까요?',
+    o:['1만 년 전','약 6,600만 년 전','1억 년 전','1,000년 전'],
+    a:1, ex:'☄️ 약 6,600만 년 전 거대한 운석이 충돌해 공룡이 멸종했어요. 하지만 새가 공룡의 직계 후손이에요! 🐦' },
+
+  { id:'m2', diff:2,
+    q:'달리기가 가장 빠른 공룡은 어느 것일까요?',
+    o:['브라키오사우루스','안킬로사우루스','오르니토미무스','트리케라톱스'],
+    a:2, ex:'💨 오르니토미무스는 타조처럼 생겼고 시속 60~70km로 달릴 수 있었어요. 자동차만큼 빠르죠! 🏃‍♂️' },
+
+  { id:'m3', diff:2,
+    q:'트리케라톱스에는 뿔이 몇 개 있었을까요?',
+    o:['1개','2개','3개','4개'],
+    a:2, ex:'🔱 "Tri"는 숫자 3을 뜻해요! 이마에 2개, 코 위에 1개, 총 3개의 뿔이 있었답니다. 🦏' },
+
+  { id:'m4', diff:2,
+    q:'안킬로사우루스는 어떻게 천적으로부터 몸을 지켰을까요?',
+    o:['독을 뿜었어요','딱딱한 갑옷 등껍질과 꼬리 망치로 싸웠어요','빠르게 달아났어요','큰 소리로 겁줬어요'],
+    a:1, ex:'🛡️ 온몸이 갑옷 같은 뼈로 덮여 있었고, 꼬리 끝에 뼈 망치가 있었어요! T-Rex도 무서워할 만큼 강력했답니다. 💥' },
+
+  { id:'m5', diff:2,
+    q:'스피노사우루스가 특히 즐겨 먹은 먹이는 무엇일까요?',
+    o:['풀과 열매','작은 포유류','물고기','곤충'],
+    a:2, ex:'🐟 스피노사우루스는 강가에 살며 주로 물고기를 잡아먹었어요! 악어처럼 생긴 긴 주둥이가 딱 맞았죠. 🌊' },
+
+  { id:'m6', diff:2,
+    q:'프테라노돈(Pteranodon)은 공룡일까요?',
+    o:['네, 하늘을 나는 공룡이에요','아니요, 익룡이라는 별개의 파충류예요','포유류예요','새의 직접적인 조상이에요'],
+    a:1, ex:'🦅 프테라노돈은 날개가 있지만 공룡이 아닌 익룡(翼龍)이에요! 공룡과 같은 시대에 살았지만 다른 종류랍니다. 🪶' },
+
+  { id:'m7', diff:2,
+    q:'공룡 이름에 자주 붙는 "-사우루스(-saurus)"는 무슨 뜻일까요?',
+    o:['무서운 이빨','도마뱀','공룡의 왕','화석'],
+    a:1, ex:'🔤 "-사우루스"는 그리스어로 "도마뱀"이라는 뜻이에요! "디노사우루스(Dinosaurus)"는 "무시무시한 도마뱀"이라는 의미랍니다. 📖' },
+
+  { id:'m8', diff:2,
+    q:'스테고사우루스 등의 뼈 판(plate)은 어떤 기능을 했을까요?',
+    o:['적을 공격하는 무기','체온 조절과 외모 과시에 쓰였어요','날개처럼 날 수 있었어요','물속에서 헤엄치는 지느러미였어요'],
+    a:1, ex:'🌡️ 과학자들은 등판이 열을 흡수·방출해 체온을 조절하고, 짝을 유인하는 과시용으로도 쓰였다고 추측해요! 🎨' },
+
+  { id:'m9', diff:2,
+    q:'지금까지 발견된 것 중 가장 무거운 공룡은 무엇일까요?',
+    o:['아르젠티노사우루스','브라키오사우루스','티라노사우루스','디플로도쿠스'],
+    a:0, ex:'⚖️ 아르젠티노사우루스는 무게가 70~80톤으로 추정돼 지금까지 발견된 공룡 중 가장 무거워요! 트럭 15대 무게와 맞먹어요. 🚛' },
+
+  { id:'m10', diff:2,
+    q:'파라사우롤로푸스 머리 위의 긴 볏(crest)은 어떤 용도였을까요?',
+    o:['물속 호흡 도구','소리를 내고 신호를 전달하는 데 사용','짝짓기 때만 사용하는 장식','먹이를 저장하는 공간'],
+    a:1, ex:'📯 파라사우롤로푸스의 속 빈 볏은 공기를 통과시켜 낮고 큰 소리를 냈어요! 동료에게 신호를 보내거나 짝을 유인하는 트럼펫 같은 역할이었답니다. 🎺' },
+
+  { id:'m11', diff:2,
+    q:'벨로시랍토르가 먹이를 사냥할 때 주로 사용한 무기는?',
+    o:['강한 꼬리','날카로운 발톱(특히 2번째 발톱)','이빨만 사용','박치기'],
+    a:1, ex:'🔪 벨로시랍토르의 두 번째 발가락에는 낫 모양의 큰 발톱이 있었어요! 이 발톱으로 먹이를 눌러 잡았답니다. 🦅' },
+
+  { id:'m12', diff:2,
+    q:'패키케팔로사우루스(Pachycephalosaurus)의 가장 독특한 특징은?',
+    o:['물갈퀴 발','두껍고 단단한 돔 모양의 머리뼈','날개 달린 팔','긴 목'],
+    a:1, ex:'🪨 패키케팔로사우루스의 머리뼈 두께는 최대 25cm! 수컷끼리 머리로 박치기해 세력을 겨뤘다고 추측돼요. 이름도 "두꺼운 머리 도마뱀"이란 뜻이랍니다. 💥' },
+
+  { id:'m13', diff:2,
+    q:'공룡 화석이 가장 많이 발견된 나라는 어디일까요?',
+    o:['미국','중국','아르헨티나','영국'],
+    a:1, ex:'🇨🇳 중국은 세계에서 공룡 화석이 가장 많이 발견된 나라예요! 특히 깃털 달린 공룡 화석 연구에서 선두를 달리고 있답니다. 🦕' },
+
+  { id:'m14', diff:2,
+    q:'안킬로사우루스의 꼬리 망치는 어느 정도 힘이 있었을까요?',
+    o:['약해서 거의 못 썼어요','T-Rex 뼈도 부술 수 있는 강도','방어보다 먹이 찾는 데 사용','물속에서 헤엄치는 용도'],
+    a:1, ex:'💪 안킬로사우루스 꼬리 망치의 타격력은 어마어마해서 티라노사우루스 뼈도 부술 수 있었다고 연구됐어요! 이름도 "융합된 도마뱀"이라는 뜻이랍니다. 🛡️' },
+
+  { id:'m15', diff:2,
+    q:'공룡 발자국 화석으로 알 수 있는 정보가 아닌 것은?',
+    o:['공룡의 이동 속도','무리지어 생활했는지 여부','공룡의 피부 색깔','공룡의 대략적인 크기'],
+    a:2, ex:'🎨 발자국 크기로 몸집을, 보폭으로 속도를, 여러 발자국 패턴으로 무리 생활을 추정할 수 있어요. 하지만 피부 색깔은 색소가 남지 않아 알 수 없답니다! 🔍' },
+
+  { id:'m16', diff:2,
+    q:'바다에서 살았던 수장룡(플레시오사우루스)의 목은 어떤 특징이었을까요?',
+    o:['매우 짧았어요','육지 공룡보다 짧고 굵었어요','물속에서 자유롭게 구부러지는 매우 긴 목','없었어요'],
+    a:2, ex:'🌊 플레시오사우루스의 목은 몸통보다 길었어요! 물고기를 낚아채기 좋은 구조였답니다. 스코틀랜드 네스 호수의 괴물 전설의 모티브가 됐을 것이라는 설도 있어요. 🐍' },
+
+  { id:'m17', diff:2,
+    q:'공룡 알은 가장 크게는 어느 정도 크기였을까요?',
+    o:['닭 알과 비슷했어요','농구공 정도 크기','지름 약 45cm이상','자동차만큼 컸어요'],
+    a:1, ex:'🥚 가장 큰 공룡 알 화석은 지름이 농구공 정도(약 30~45cm)였어요! 너무 크면 껍데기가 너무 두꺼워져 산소 교환이 안 되기 때문에 무한정 커질 수 없었답니다. 🔬' },
+
+  /* ── HARD (16) ───────────────────────────── */
+  { id:'h1', diff:3,
+    q:'스피노사우루스와 티라노사우루스 중 몸이 더 컸던 공룡은 어느 쪽일까요?',
+    o:['티라노사우루스','스피노사우루스','둘의 크기가 같아요','알 수 없어요'],
+    a:1, ex:'📏 스피노사우루스는 약 15~18m로, T-Rex(약 12m)보다 훨씬 컸어요! 지금까지 발견된 육식공룡 중 가장 길었답니다. 🦖' },
+
+  { id:'h2', diff:3,
+    q:'벨로시랍토르의 실제 크기는 어느 정도였을까요?',
+    o:['사람보다 훨씬 컸어요','칠면조나 오리 정도 크기였어요','코끼리만 했어요','말 정도 크기였어요'],
+    a:1, ex:'🔬 영화 속 벨로시랍토르는 크게 묘사됐지만 실제론 칠면조만 했어요! 영화 속 크기는 더 큰 친척 데이노니쿠스에 가깝답니다. 🎬' },
+
+  { id:'h3', diff:3,
+    q:'"공룡(Dinosauria)"이라는 이름을 처음 만든 과학자는 누구일까요?',
+    o:['찰스 다윈','리처드 오웬','메리 에닝','루이스 알바레즈'],
+    a:1, ex:'🔭 영국 과학자 리처드 오웬이 1842년 "공룡(Dinosauria)"이라는 이름을 처음 붙였어요! 그리스어로 "무시무시한 도마뱀"이란 뜻이에요. 📚' },
+
+  { id:'h4', diff:3,
+    q:'최신 연구에 따르면 대부분의 공룡은 어떤 체온 유형이었을까요?',
+    o:['냉혈동물(파충류처럼 체온 조절 못 함)','온혈동물(새·포유류처럼 체온 유지)','체온이 아예 없었어요','계절마다 달라졌어요'],
+    a:1, ex:'🌡️ 최근 연구에서 많은 공룡이 온혈동물에 가까웠다는 증거가 나왔어요! 그래서 그렇게 빠르고 활발하게 움직일 수 있었던 거예요. 🔥' },
+
+  { id:'h5', diff:3,
+    q:'현재 살아있는 동물 중 공룡과 가장 가까운 친척은 무엇일까요?',
+    o:['악어','새','도마뱀','상어'],
+    a:1, ex:'🐦 새는 수각류 공룡(벨로시랍토르, T-Rex 등)에서 직접 진화했어요! "살아있는 공룡"이라고도 불린답니다. 깃털 달린 공룡 화석도 발견됐어요! 🧬' },
+
+  { id:'h6', diff:3,
+    q:'현재까지 알려진 가장 오래된 공룡의 이름은 무엇일까요?',
+    o:['티라노사우루스','벨로시랍토르','에오랍토르','이구아노돈'],
+    a:2, ex:'🌋 에오랍토르(Eoraptor)는 약 2억 3천만 년 전 살았던 가장 오래된 공룡 중 하나예요! "새벽의 약탈자"라는 뜻이랍니다. 🌅' },
+
+  { id:'h7', diff:3,
+    q:'어룡(이크티오사우루스)과 수장룡(플레시오사우루스)은 공룡일까요?',
+    o:['네, 바다 공룡이에요','아니요, 공룡이 아닌 별개의 파충류예요','포유류예요','익룡과 같은 종류예요'],
+    a:1, ex:'🌊 어룡·수장룡은 공룡과 같은 시대에 살았지만 완전히 다른 파충류예요! 세 그룹은 모두 중생대에 번성했지만 서로 다른 계통이랍니다. 🔬' },
+
+  { id:'h8', diff:3,
+    q:'용각류(긴 목 공룡) 일부가 소화를 돕기 위해 실제로 한 행동은?',
+    o:['하루 종일 물속에 있었어요','작은 돌(위석)을 삼켜 소화를 도왔어요','특별한 식물만 먹었어요','거꾸로 매달려 잤어요'],
+    a:1, ex:'🪨 용각류 공룡들은 이빨이 나뭇잎을 갈기에 약해서 위석(gastroliths)이라는 작은 돌을 삼켜 위 속에서 음식을 갈았어요! 닭의 모래주머니와 비슷한 원리예요. 🐔' },
+
+  { id:'h9', diff:3,
+    q:'깃털이 있는 공룡 화석으로 새와 공룡의 연결고리가 된 화석의 이름은?',
+    o:['시조새(아르카이오프테릭스)','에오랍토르','이구아노돈','브라키오사우루스'],
+    a:0, ex:'🪶 시조새(Archaeopteryx)는 1861년 독일에서 발견됐으며, 공룡의 특징(이빨, 발톱)과 새의 특징(깃털, 날개)을 함께 가졌어요! 진화의 가장 중요한 증거 중 하나랍니다. 🔬' },
+
+  { id:'h10', diff:3,
+    q:'공룡을 멸종시킨 운석이 충돌한 지역은 현재 어디일까요?',
+    o:['남극','멕시코 유카탄 반도','아프리카 사하라','인도 데칸 고원'],
+    a:1, ex:'💥 칙술루브 충돌구(Chicxulub Crater)는 멕시코 유카탄 반도에 있어요! 지름이 180km에 달하며 대부분 바다 아래 있답니다. 이 충돌로 전 지구적 겨울이 찾아왔어요. 🌍' },
+
+  { id:'h11', diff:3,
+    q:'지금까지 발견된 가장 작은 공룡은 어느 정도 크기였을까요?',
+    o:['고양이만한 크기','벌새만한 크기','참새 정도','쥐보다 작았어요'],
+    a:1, ex:'🐦 미크로랍토르(Microraptor)나 초기 수각류 공룡 중 벌새만한 크기의 것들이 발견됐어요! 호박 속에서 발견된 99백만 년 된 공룡 새끼 표본은 현재 연구 중이랍니다. 🔍' },
+
+  { id:'h12', diff:3,
+    q:'수각류 공룡의 가장 중요한 해부학적 특징은 무엇일까요?',
+    o:['네 발로 걷는다','두 발로 걷고 속이 빈 뼈를 가진다','물갈퀴가 있다','등에 돛 모양 구조가 있다'],
+    a:1, ex:'🦴 수각류(Theropoda)는 두 발로 걷고 새처럼 속이 빈 가벼운 뼈를 가졌어요! T-Rex, 벨로시랍토르, 알로사우루스가 모두 수각류이며 새의 직접 조상이랍니다. 🐦' },
+
+  { id:'h13', diff:3,
+    q:'공룡의 호흡 방식은 현대 어떤 동물과 가장 비슷한 것으로 알려져 있을까요?',
+    o:['포유류(우리 인간)','악어','새(기낭 호흡)','물고기'],
+    a:2, ex:'💨 공룡은 새처럼 기낭(air sac) 시스템을 이용해 호흡했을 것으로 보여요! 숨을 들이쉴 때와 내쉴 때 모두 폐에 신선한 공기가 흐르는 매우 효율적인 방식이랍니다. 🫁' },
+
+  { id:'h14', diff:3,
+    q:'트리케라톱스와 티라노사우루스는 실제로 같은 시대에 살았을까요?',
+    o:['아니요, 수천만 년 차이가 나요','네, 백악기 말에 함께 살았어요','트리케라톱스가 훨씬 먼저 멸종했어요','둘 다 쥐라기에 살았어요'],
+    a:1, ex:'🦖🔱 둘은 모두 백악기 말(약 6,800만~6,600만 년 전) 북아메리카에 살았어요! 실제로 T-Rex가 트리케라톱스를 사냥했다는 증거 화석도 발견됐답니다. ⚔️' },
+
+  { id:'h15', diff:3,
+    q:'스피노사우루스 등의 거대한 돛 모양 구조는 어떤 기능을 했을까요?',
+    o:['날개처럼 날 수 있었어요','체온 조절과 과시용이었을 가능성이 높아요','물고기를 잡는 그물 역할','방어용 갑옷'],
+    a:1, ex:'🌡️ 스피노사우루스의 등 돛은 혈관이 풍부해 체온 조절에 쓰였거나, 짝을 유인하는 과시 구조였을 것으로 보여요! 낙타 혹처럼 에너지를 저장했다는 설도 있답니다. 🐪' },
+
+  { id:'h16', diff:3,
+    q:'공룡 뼈의 성장 링(bone ring)을 분석하면 무엇을 알 수 있을까요?',
+    o:['공룡의 피부 색깔','나이와 성장 속도','먹은 음식의 종류','뇌의 크기'],
+    a:1, ex:'📅 나무의 나이테처럼 공룡 뼈 단면에도 성장 링이 있어요! 이를 통해 공룡이 몇 살이었는지, 얼마나 빨리 성장했는지 알 수 있답니다. T-Rex는 청소년기에 급격히 성장했어요! 🦴' },
 ];
 
+/* ============================================================ */
+
 const DIFF_META = {
-  1:{ label:'⭐ 쉬움', cls:'diff-easy', color:'#2d8a45', emoji:'🦕' },
-  2:{ label:'⭐⭐ 보통', cls:'diff-medium', color:'#e08010', emoji:'🌿' },
-  3:{ label:'⭐⭐⭐ 어려움', cls:'diff-hard', color:'#c0522a', emoji:'🦖' },
+  1:{ label:'⭐ 쉬움',       cls:'diff-easy',   color:'#2d8a45', emoji:'🦕' },
+  2:{ label:'⭐⭐ 보통',     cls:'diff-medium',  color:'#e08010', emoji:'🌿' },
+  3:{ label:'⭐⭐⭐ 어려움', cls:'diff-hard',    color:'#c0522a', emoji:'🦖' },
 };
 
 const RANKS = [
@@ -331,10 +595,13 @@ const RANKS = [
 ];
 
 const TOTAL_Q = 5;
+
+/* ── state ── */
 let userName='', currentQ=0, score=0, answered=false;
 let currentDiff=2, streak=0;
 let usedIds=new Set(), history=[], activeQ=null;
 
+/* ── utils ── */
 function pickQuestion(diff) {
   const order = [diff, diff<3?diff+1:diff-1, diff===2?1:2];
   for (const d of order) {
@@ -351,6 +618,7 @@ function showPage(id) {
   window.scrollTo(0,0);
 }
 
+/* ── LANDING → QUIZ ── */
 function startQuiz() {
   const n = document.getElementById('nameInput').value.trim();
   if (!n) {
@@ -367,13 +635,18 @@ function startQuiz() {
   showPage('page-quiz');
 }
 
+/* ── RENDER QUESTION ── */
 function renderQuestion() {
+  // FIX #2: block all interactions until animation completes
   answered = true;
   activeQ = pickQuestion(currentDiff);
   usedIds.add(activeQ.id);
+
   document.getElementById('progressFill').style.width = `${(currentQ/TOTAL_Q)*100}%`;
   document.getElementById('qScore').textContent = `점수: ${score}`;
   document.getElementById('nextBtn').style.display = 'none';
+
+  // q-stars
   const starsEl = document.getElementById('qStars');
   starsEl.innerHTML = '';
   for (let i=0; i<TOTAL_Q; i++) {
@@ -384,15 +657,19 @@ function renderQuestion() {
     else                          { s.textContent = '⬜'; }
     starsEl.appendChild(s);
   }
+
+  // FIX #3: emoji from difficulty, NOT from question (no spoilers)
   const meta = DIFF_META[activeQ.diff];
   const badge = document.getElementById('diffBadge');
   badge.textContent = meta.label;
   badge.className = `diff-badge ${meta.cls}`;
   document.getElementById('qEmoji').textContent = meta.emoji;
+
   updateStreakUI();
   document.getElementById('qText').textContent = activeQ.q;
   const expEl = document.getElementById('explanation');
   expEl.classList.remove('show'); expEl.textContent = '';
+
   const grid = document.getElementById('optionsGrid');
   grid.innerHTML = '';
   activeQ.o.forEach((opt, i) => {
@@ -402,6 +679,8 @@ function renderQuestion() {
     btn.onclick = () => selectAnswer(i, btn);
     grid.appendChild(btn);
   });
+
+  // FIX #2: block card during pop-in animation
   const card = document.getElementById('quizCard');
   card.classList.add('quiz-loading');
   card.style.animation = 'none';
@@ -409,16 +688,18 @@ function renderQuestion() {
   card.style.animation = 'popIn .4s cubic-bezier(.34,1.56,.64,1) forwards';
   card.addEventListener('animationend', () => {
     card.classList.remove('quiz-loading');
-    answered = false;
+    answered = false;  // now allow selections
   }, { once: true });
 }
 
+/* ── SELECT ANSWER + ADAPTIVE ── */
 function selectAnswer(chosen, btn) {
   if (answered) return;
   answered = true;
   const isCorrect = (chosen === activeQ.a);
   const btns = document.querySelectorAll('.option-btn');
   btns.forEach(b=>b.disabled=true);
+
   if (isCorrect) {
     score++; streak++;
     btn.classList.add('correct');
@@ -430,13 +711,17 @@ function selectAnswer(chosen, btn) {
     btn.innerHTML = '❌ ' + btn.innerHTML;
     btns[activeQ.a].classList.add('correct');
   }
+
   history.push({ diff:activeQ.diff, correct:isCorrect, label:DIFF_META[activeQ.diff].label });
+
   const expEl = document.getElementById('explanation');
   expEl.textContent = activeQ.ex;
   expEl.classList.add('show');
   document.getElementById('qScore').textContent = `점수: ${score}`;
   document.getElementById('nextBtn').style.display = 'inline-flex';
   updateStreakUI();
+
+  // ADAPTIVE: adjust next difficulty
   if (currentQ < TOTAL_Q - 1) {
     const prev = currentDiff;
     if (isCorrect && currentDiff < 3) currentDiff++;
@@ -468,6 +753,7 @@ function showDiffToast(harder) {
   setTimeout(()=>el.remove(), 2400);
 }
 
+/* ── NEXT QUESTION ── */
 function nextQuestion() {
   document.getElementById('nextBtn').style.display = 'none';
   currentQ++;
@@ -475,20 +761,25 @@ function nextQuestion() {
   else renderQuestion();
 }
 
+/* ── RESULT ── */
 function getRank(s) { return RANKS.find(r=>s>=r.min&&s<=r.max) || RANKS[0]; }
 
 function showResult() {
   showPage('page-result');
   const pct  = score / TOTAL_Q * 100;
   const rank = getRank(score);
+
   document.getElementById('resultGreeting').textContent = `${userName}의 결과예요!`;
   document.getElementById('resultMsg').textContent      = rank.msg;
+
   document.getElementById('scoreCircleWrap').innerHTML = `
     <div class="score-circle pop-in" style="background:conic-gradient(var(--leaf) ${pct}%,#dde8d5 0%);">
       <div class="score-circle-inner"><span>${score}</span><small>/ ${TOTAL_Q}점</small></div>
     </div>`;
+
   document.getElementById('rankDisplay').innerHTML =
     `<div class="rank-badge rank-${rank.id} pop-in">${rank.label}</div>`;
+
   const row = document.getElementById('historyRow');
   row.innerHTML = '';
   history.forEach((h,i) => {
@@ -497,13 +788,15 @@ function showResult() {
     c.innerHTML = `${h.correct?'✅':'❌'} ${i+1}번 <span style="opacity:.65;font-size:.7rem;">${h.label}</span>`;
     row.appendChild(c);
   });
+
   if (score===TOTAL_Q) spawnConfetti(30);
 }
 
+/* ── CERTIFICATE ── */
 async function showCertificate() {
   showPage('page-cert');
   spawnConfetti(18);
-  await document.fonts.ready;
+  await document.fonts.ready;   // FIX #1: wait for web fonts before drawing
   drawCertificate();
 }
 
@@ -512,6 +805,7 @@ function drawCertificate() {
   const ctx = canvas.getContext('2d');
   const W=700, H=490;
   canvas.width=W; canvas.height=H;
+
   const rank    = getRank(score);
   const today   = new Date();
   const dateStr = `${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
@@ -528,121 +822,192 @@ function drawCertificate() {
     if (stroke){ ctx.strokeStyle=stroke; ctx.lineWidth=lw; ctx.stroke(); }
   }
 
+  // Background
   const bg=ctx.createLinearGradient(0,0,W,H);
-  bg.addColorStop(0,'#fdf8ee'); bg.addColorStop(.5,'#f5ffe8'); bg.addColorStop(1,'#fdf8ee');
+  bg.addColorStop(0,'#1a0e05'); bg.addColorStop(.5,'#1a1a08'); bg.addColorStop(1,'#1a0e05');
   ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
-  rr(8,8,W-16,H-16,20,null,'#1a5c2a',6);
+
+  rr(8,8,W-16,H-16,20,null,'#7a4010',6);
   rr(18,18,W-36,H-36,16,null,'#f5a623',2.5);
+
+  // Corner ornaments
   ctx.font='26px serif'; ctx.textAlign='center'; ctx.textBaseline='middle';
   [[30,30],[W-30,30],[30,H-30],[W-30,H-30]].forEach(([x,y],i)=>{
     ctx.save(); ctx.translate(x,y); ctx.rotate([0,Math.PI/2,-Math.PI/2,Math.PI][i]);
     ctx.fillText('🌿',0,0); ctx.restore();
   });
+
+  // Header ribbon
   const ribbon=ctx.createLinearGradient(0,44,0,82);
-  ribbon.addColorStop(0,'#1a5c2a'); ribbon.addColorStop(1,'#2d8a45');
+  ribbon.addColorStop(0,'#7a4010'); ribbon.addColorStop(1,'#c06010');
   ctx.fillStyle=ribbon; ctx.fillRect(30,44,W-60,38);
   ctx.font='bold 20px Jua,sans-serif'; ctx.fillStyle='#f5a623';
   ctx.textAlign='center'; ctx.textBaseline='middle';
   ctx.fillText('🌿 공룡 탐험대 공식 자격증 🌿',W/2,63);
-  ctx.font='bold 32px Jua,sans-serif'; ctx.fillStyle='#1a5c2a';
+
+  // Title
+  ctx.font='bold 32px Jua,sans-serif'; ctx.fillStyle='#f5d090';
   ctx.textBaseline='alphabetic'; ctx.shadowColor='rgba(26,92,42,.2)'; ctx.shadowBlur=8;
   ctx.fillText('공룡 전문가 자격증',W/2,130); ctx.shadowBlur=0;
+
+  // Side dinos
   ctx.font='72px serif'; ctx.textAlign='left'; ctx.textBaseline='middle'; ctx.fillText('🦖',44,250);
   ctx.textAlign='right'; ctx.fillText('🦕',W-40,250);
-  ctx.font='15px Nanum Gothic,sans-serif'; ctx.fillStyle='#5c3a1e';
+
+  // Sub text
+  ctx.font='15px Nanum Gothic,sans-serif'; ctx.fillStyle='#a07040';
   ctx.textAlign='center'; ctx.textBaseline='alphabetic';
   ctx.fillText('이 자격증은 아래의 공룡 탐험가에게 수여합니다.',W/2,160);
-  ctx.font='bold 44px Jua,sans-serif'; ctx.fillStyle='#c0522a';
+
+  // Name
+  ctx.font='bold 44px Jua,sans-serif'; ctx.fillStyle='#f5a623';
   ctx.shadowColor='rgba(192,82,42,.2)'; ctx.shadowBlur=10;
   ctx.fillText(userName,W/2,215); ctx.shadowBlur=0;
+
+  // Underline
   const ulW=Math.min(ctx.measureText(userName).width+40,280);
   ctx.strokeStyle='#f5a623'; ctx.lineWidth=2.5;
   ctx.beginPath(); ctx.moveTo(W/2-ulW/2,223); ctx.lineTo(W/2+ulW/2,223); ctx.stroke();
-  ctx.font='16px Jua,sans-serif'; ctx.fillStyle='#1a5c2a';
+
+  // Score + diff note
+  ctx.font='16px Jua,sans-serif'; ctx.fillStyle='#a07040';
   ctx.fillText(`퀴즈 점수: ${score}점 / ${TOTAL_Q}점 만점  ·  ${diffNote}`,W/2,260);
+
+  // Rank badge
   const rankW=240,rankH=44,rankX=W/2-rankW/2,rankY=272;
   rr(rankX,rankY,rankW,rankH,22,rank.color,rank.color);
   ctx.font='bold 19px Jua,sans-serif'; ctx.fillStyle='#fff';
   ctx.textAlign='center'; ctx.textBaseline='middle';
   ctx.fillText(rank.label,W/2,rankY+rankH/2);
-  ctx.strokeStyle='rgba(26,92,42,.2)'; ctx.lineWidth=1.5; ctx.setLineDash([6,4]);
+
+  // Divider
+  ctx.strokeStyle='rgba(245,166,35,.2)'; ctx.lineWidth=1.5; ctx.setLineDash([6,4]);
   ctx.beginPath(); ctx.moveTo(50,334); ctx.lineTo(W-50,334); ctx.stroke(); ctx.setLineDash([]);
-  ctx.font='14px Nanum Gothic,sans-serif'; ctx.fillStyle='#888';
+
+  // Date & issuer — FIX #5: "공룡탐험 위원회"
+  ctx.font='14px Nanum Gothic,sans-serif'; ctx.fillStyle='#a07040';
   ctx.textAlign='left'; ctx.textBaseline='alphabetic';
   ctx.fillText(`발급일: ${dateStr}`, 56, 366);
   ctx.textAlign='right';
   ctx.fillText('발급기관: 공룡탐험 위원회', W-56, 366);
+
+  // FIX #6: draw proper dino emblem
   drawEmblem(ctx, W/2, 432, 50);
 }
 
+/* ── DINO EMBLEM (replaces cheap star) ── */
 function drawEmblem(ctx, cx, cy, R) {
   const s = R * 0.019;
+
   ctx.save();
   ctx.translate(cx, cy);
+
+  // Drop shadow
   ctx.shadowColor = 'rgba(0,0,0,0.35)';
   ctx.shadowBlur  = 14;
   ctx.shadowOffsetY = 4;
+
+  // Radial gradient background
   const bg = ctx.createRadialGradient(-R*.28,-R*.28,0, 0,0,R);
   bg.addColorStop(0, '#3da65a');
   bg.addColorStop(1, '#0c2e14');
   ctx.beginPath(); ctx.arc(0,0,R,0,Math.PI*2);
   ctx.fillStyle = bg; ctx.fill();
   ctx.shadowBlur=0; ctx.shadowOffsetY=0;
+
+  // Gold outer ring
   ctx.beginPath(); ctx.arc(0,0,R,0,Math.PI*2);
   ctx.strokeStyle='#f5c030'; ctx.lineWidth=4; ctx.stroke();
+
+  // Thin inner ring
   ctx.beginPath(); ctx.arc(0,0,R-9,0,Math.PI*2);
   ctx.strokeStyle='rgba(245,192,48,.4)'; ctx.lineWidth=1; ctx.stroke();
+
+  // ── T-Rex silhouette ──
   ctx.save();
-  ctx.translate(-3*s, -5*s);
+  ctx.translate(-3*s, -5*s);   // shift slightly to visually center (tail left / head right)
   ctx.fillStyle = 'rgba(255,255,255,0.9)';
+
+  // Body
   ctx.save(); ctx.rotate(-0.1);
   ctx.beginPath(); ctx.ellipse(0, 2*s, 16*s, 10*s, 0, 0, Math.PI*2); ctx.fill();
   ctx.restore();
+
+  // Neck
   ctx.beginPath(); ctx.ellipse(10*s,-8*s, 5*s,8*s, 0.25, 0,Math.PI*2); ctx.fill();
+
+  // Head
   ctx.beginPath();
-  ctx.moveTo(9*s,-17*s); ctx.lineTo(20*s,-16*s); ctx.lineTo(24*s,-12*s);
-  ctx.lineTo(26*s, -8*s); ctx.lineTo(27*s, -5*s); ctx.lineTo(23*s, -2*s);
-  ctx.lineTo(24*s,  1*s); ctx.lineTo(17*s,  0*s); ctx.lineTo(11*s, -5*s);
-  ctx.lineTo( 9*s,-14*s); ctx.closePath(); ctx.fill();
-  ctx.beginPath();
-  ctx.moveTo(-14*s, 3*s); ctx.lineTo(-32*s, 0*s);
-  ctx.lineTo(-28*s, 5*s); ctx.lineTo(-10*s, 8*s);
+  ctx.moveTo(9*s,-17*s);
+  ctx.lineTo(20*s,-16*s);
+  ctx.lineTo(24*s,-12*s);
+  ctx.lineTo(26*s, -8*s);
+  ctx.lineTo(27*s, -5*s);   // upper snout
+  ctx.lineTo(23*s, -2*s);   // jaw gap
+  ctx.lineTo(24*s,  1*s);   // lower jaw tip
+  ctx.lineTo(17*s,  0*s);   // lower jaw back
+  ctx.lineTo(11*s, -5*s);   // throat
+  ctx.lineTo( 9*s,-14*s);
   ctx.closePath(); ctx.fill();
+
+  // Tail
+  ctx.beginPath();
+  ctx.moveTo(-14*s, 3*s);
+  ctx.lineTo(-32*s, 0*s);
+  ctx.lineTo(-28*s, 5*s);
+  ctx.lineTo(-10*s, 8*s);
+  ctx.closePath(); ctx.fill();
+
+  // Left leg (back)
   ctx.beginPath();
   ctx.moveTo(-5*s,11*s); ctx.lineTo(0*s,11*s);
   ctx.lineTo(0.5*s,22*s); ctx.lineTo(-6*s,22*s);
   ctx.closePath(); ctx.fill();
+  // left foot
   ctx.beginPath();
   ctx.moveTo(-7*s,22*s); ctx.lineTo(1*s,22*s);
   ctx.lineTo(3*s,27*s); ctx.lineTo(-9*s,27*s);
   ctx.closePath(); ctx.fill();
+
+  // Right leg (front)
   ctx.beginPath();
   ctx.moveTo(3*s,11*s); ctx.lineTo(8*s,11*s);
   ctx.lineTo(9*s,22*s); ctx.lineTo(2*s,22*s);
   ctx.closePath(); ctx.fill();
+  // right foot
   ctx.beginPath();
   ctx.moveTo(1*s,22*s); ctx.lineTo(9*s,22*s);
   ctx.lineTo(12*s,27*s); ctx.lineTo(-2*s,27*s);
   ctx.closePath(); ctx.fill();
+
+  // Small arm
   ctx.beginPath();
   ctx.moveTo(9*s,-3*s); ctx.lineTo(17*s,-0.5*s);
   ctx.lineTo(16*s,3*s); ctx.lineTo(8*s,0.5*s);
   ctx.closePath(); ctx.fill();
+
+  // Eye
   ctx.beginPath(); ctx.arc(19*s,-12*s,1.5*s,0,Math.PI*2);
   ctx.fillStyle='#082410'; ctx.fill();
-  ctx.restore();
+
+  ctx.restore(); // undo T-Rex offset
+
+  // ── Curved text "공룡탐험위원회" ──
   const text  = '공룡탐험위원회';
   const textR = R - 7;
   const fSize = Math.max(8, Math.round(R * 0.175));
   ctx.font = `bold ${fSize}px 'Nanum Gothic', sans-serif`;
   ctx.fillStyle    = '#f5c030';
   ctx.textAlign    = 'center';
-  ctx.textBaseline = 'bottom';
+  ctx.textBaseline = 'bottom';  // bottoms outward, tops inward
+
   const chars = text.split('');
-  const n = chars.length;
+  const n = chars.length;  // 7
+  // Arc from 145° to 35° counterclockwise through the bottom (90°)
   const startAngle = 145 * Math.PI / 180;
   const endAngle   =  35 * Math.PI / 180;
-  const arcStep    = (endAngle - startAngle) / (n - 1);
+  const arcStep    = (endAngle - startAngle) / (n - 1);  // negative step
+
   chars.forEach((ch, i) => {
     const angle = startAngle + arcStep * i;
     const px = Math.cos(angle) * textR;
@@ -653,18 +1018,23 @@ function drawEmblem(ctx, cx, cy, R) {
     ctx.fillText(ch, 0, 0);
     ctx.restore();
   });
+
+  // ── Three decorative dots at top ──
   ctx.fillStyle = '#f5c030';
   [-1, 0, 1].forEach(i => {
     ctx.beginPath();
     ctx.arc(i * R * 0.28, -R * 0.83, R * 0.055, 0, Math.PI*2);
     ctx.fill();
   });
+
   ctx.restore();
 }
 
+/* ── DOWNLOAD — FIX #1: toBlob is most reliable cross-browser ── */
 function downloadCert() {
   const canvas = document.getElementById('certCanvas');
   if (!canvas.width) { alert('자격증이 아직 준비 중이에요! 잠깐 기다려주세요 😊'); return; }
+
   canvas.toBlob(blob => {
     if (!blob) { alert('저장에 실패했어요. 이미지를 꾹 눌러 직접 저장해 보세요! 📱'); return; }
     const url = URL.createObjectURL(blob);
@@ -679,6 +1049,7 @@ function downloadCert() {
   }, 'image/png', 1.0);
 }
 
+/* ── RESTART ── */
 function restartQuiz() {
   document.getElementById('nameInput').value='';
   userName=''; currentQ=0; score=0; streak=0;
@@ -686,8 +1057,9 @@ function restartQuiz() {
   showPage('page-landing');
 }
 
+/* ── CONFETTI ── */
 function spawnConfetti(count=8) {
-  const colors=['#1a5c2a','#f5a623','#c0522a','#7ec850','#ffd966','#ff8c55'];
+  const colors = ['#f5a623','#2d8a45','#ffffff','#7ec850','#e08010','#a0d0a0','#f5d090'];
   for(let i=0; i<count; i++){
     const el = document.createElement('div');
     el.className='confetti-piece';
@@ -706,5 +1078,6 @@ function spawnConfetti(count=8) {
 
 document.getElementById('nameInput').addEventListener('keydown', e=>{ if(e.key==='Enter') startQuiz(); });
 </script>
+
 </body>
 </html>
