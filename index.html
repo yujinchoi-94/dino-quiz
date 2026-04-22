@@ -97,6 +97,7 @@ box-shadow:0 0 10px rgba(245,166,35,.6);
 .diff-easy  {background:rgba(45,138,69,.2); color:#a0e080;border:1px solid rgba(126,200,80,.5);}
 .diff-medium{background:rgba(245,166,35,.2);color:#f5d090;border:1px solid rgba(245,166,35,.5);}
 .diff-hard  {background:rgba(192,82,42,.2); color:#e08060;border:1px solid rgba(192,82,42,.5);}
+.diff-extreme{background:linear-gradient(135deg,rgba(120,40,160,.35),rgba(200,40,80,.35));color:#f0c0ff;border:1px solid rgba(200,120,255,.7);box-shadow:0 0 12px rgba(180,80,220,.4);}
 .diff-up  {animation:diffUp   .5s cubic-bezier(.34,1.56,.64,1);}
 .diff-down{animation:diffDown .5s cubic-bezier(.34,1.56,.64,1);}
 @keyframes diffUp  {0%{transform:scale(1)}50%{transform:scale(1.28) translateY(-4px)}100%{transform:scale(1)}}
@@ -250,6 +251,8 @@ border-top:1px solid rgba(245,166,35,.15);
       <span class="diff-badge diff-medium">⭐⭐ 보통</span>
       <span style="color:#aaa;font-size:.85rem;">→ 맞히면 →</span>
       <span class="diff-badge diff-hard">⭐⭐⭐ 어려움</span>
+      <span style="color:#aaa;font-size:.85rem;">→ 또 맞히면 →</span>
+      <span class="diff-badge diff-extreme">💀 매니아</span>
     </div>
   </div>
 </section>
@@ -318,10 +321,10 @@ border-top:1px solid rgba(245,166,35,.15);
 
 <script>
 /* ==============================================================
-   QUESTION BANK  —  diff: 1=쉬움 / 2=보통 / 3=어려움
+   QUESTION BANK  —  diff: 1=쉬움 / 2=보통 / 3=어려움 / 4=매니아(extreme)
    ✅ NO per-question emojis (removed hint problem)
 ============================================================== */
-/* 총 50문제: 쉬움 17, 보통 17, 어려움 16 */
+/* 총 65문제: 쉬움 17, 보통 17, 어려움 16, 매니아 15 */
 const BANK = [
 
   /* ── EASY (17) ─────────────────────────────── */
@@ -576,6 +579,84 @@ const BANK = [
     q:'공룡 뼈의 성장 링(bone ring)을 분석하면 무엇을 알 수 있을까요?',
     o:['공룡의 피부 색깔','나이와 성장 속도','먹은 음식의 종류','뇌의 크기'],
     a:1, ex:'📅 나무의 나이테처럼 공룡 뼈 단면에도 성장 링이 있어요! 이를 통해 공룡이 몇 살이었는지, 얼마나 빨리 성장했는지 알 수 있답니다. T-Rex는 청소년기에 급격히 성장했어요! 🦴' },
+
+  /* ── EXTREME / 매니아 (15) ─────────────────────
+     최고 매니아 수준 — 골수 공룡덕만 알 수 있는 영역
+  ───────────────────────────────────────────── */
+  { id:'x1', diff:4,
+    q:'거대한 낫 모양 발톱으로 유명한 Therizinosaurus는 발견 초기 어떤 동물로 오해받았을까요?',
+    o:['대형 악어','거대한 바다거북','날지 못하는 새','해양 파충류'],
+    a:1, ex:'🐢 1948년 몽골에서 처음 발견된 Therizinosaurus의 거대한 발톱 화석은 너무나 기이해서 한동안 거대한 바다거북의 갈비뼈로 분류됐어요! 실제로는 수각류이면서도 초식성으로 진화한 Therizinosauridae과의 대표종이랍니다.' },
+
+  { id:'x2', diff:4,
+    q:'Alvarezsauridae(알바레즈사우루스과)의 가장 독특한 해부학적 특징은?',
+    o:['목에 방어용 골판이 있음','앞발에 단 하나의 거대한 발톱만 기능적으로 남음','꼬리 끝에 곤봉이 달림','이빨이 없고 부리만 존재'],
+    a:1, ex:'🦴 Mononykus, Shuvuuia 같은 알바레즈사우루스류는 앞발이 극도로 축소되어 가운데 발가락 하나의 거대한 발톱만 남았어요. 흰개미 둥지를 파는 데 썼을 것으로 추정되지만 여전히 논쟁 중이랍니다.' },
+
+  { id:'x3', diff:4,
+    q:'2015년에 기재된 Yi qi(이 치)가 학계에 충격을 준 이유는?',
+    o:['가장 큰 공룡 알을 낳음','박쥐처럼 피막(membrane)으로 된 날개를 가짐','깃털 없이 완전한 비늘만 가짐','유일하게 네발로 뛰는 수각류'],
+    a:1, ex:'🦇 Yi qi는 스칸소리옵테릭스과에 속하는 작은 수각류로, 손목에서 뻗어나온 긴 막대뼈(styliform element)에 피막이 붙어 박쥐같은 날개를 형성했어요. 공룡의 비행 진화가 단일 경로가 아니었음을 보여주는 결정적 증거랍니다.' },
+
+  { id:'x4', diff:4,
+    q:'2010년, 멜라노솜 분석으로 최초로 전신 색이 복원된 공룡은?',
+    o:['Archaeopteryx','Anchiornis huxleyi','Microraptor','Sinosauropteryx'],
+    a:1, ex:'🎨 Anchiornis huxleyi는 깃털 화석 속 멜라노솜(eumelanosome/phaeomelanosome)의 형태를 분석해 전신 색이 최초로 복원된 공룡이에요. 몸은 흑백, 다리는 흰 반점, 머리 볏은 적갈색으로 밝혀졌답니다. (Sinosauropteryx도 2010년에 꼬리 패턴이 복원됐지만 전신 복원은 Anchiornis가 먼저예요.)' },
+
+  { id:'x5', diff:4,
+    q:'Mary Schweitzer가 2005년에 T-Rex 화석에서 발견해 큰 논쟁을 일으킨 것은?',
+    o:['공룡 DNA 완전 시퀀스','대퇴골 안의 연부조직(soft tissue)과 콜라겐 단백질 흔적','공룡 혈액 세포 생존체','공룡의 털 케라틴'],
+    a:1, ex:'🔬 슈바이처는 MOR 1125 표본의 대퇴골에서 혈관 같은 탄력 있는 구조와 콜라겐 I 단백질 조각을 검출했어요. 오염 논쟁이 뜨거웠지만 후속 연구에서 일부 재현됐고, 공룡과 현생 조류의 분자계통 비교까지 이어졌답니다.' },
+
+  { id:'x6', diff:4,
+    q:'대멸종이 일어난 백악기의 마지막 절(age)을 가리키는 지질시대 명칭은?',
+    o:['Campanian','Maastrichtian','Santonian','Cenomanian'],
+    a:1, ex:'🌋 Maastrichtian(마스트리히트절, 약 72.1~66.0 Ma)은 백악기의 마지막 절로, T-Rex·Triceratops·Edmontosaurus 등 Hell Creek 동물군이 살던 시기예요. Campanian(캄파니안)이 바로 그 직전 절이랍니다.' },
+
+  { id:'x7', diff:4,
+    q:'최초의 새로 불리는 Archaeopteryx가 살았던 쥐라기 후기의 지질 시대 절은?',
+    o:['Oxfordian','Kimmeridgian','Tithonian','Bathonian'],
+    a:1, ex:'🪶 Archaeopteryx의 모식표본이 나온 독일 Solnhofen 석회암은 쥐라기 후기의 Tithonian(티토니안, 약 152~145 Ma)에 해당해요. Kimmeridgian은 그 바로 전 절로, Allosaurus·Stegosaurus의 Morrison 층과도 겹치는 시기랍니다.' },
+
+  { id:'x8', diff:4,
+    q:'Tyrannosaurus rex를 정식으로 명명한 고생물학자와 연도는?',
+    o:['Edward Drinker Cope, 1892','Henry Fairfield Osborn, 1905','Othniel Charles Marsh, 1877','Barnum Brown, 1902'],
+    a:1, ex:'📜 T. rex는 1905년 미국 자연사박물관 관장 Henry Fairfield Osborn이 기재·명명했어요. 실제로 모식표본(AMNH 973, 이후 CM 9380)을 발굴한 사람은 전설적인 화석 사냥꾼 Barnum Brown으로, 1902년 몬태나 Hell Creek에서 발견했답니다.' },
+
+  { id:'x9', diff:4,
+    q:'T-Rex·Triceratops·Edmontosaurus의 주 산지로 유명한 북미 백악기 말 지층의 이름은?',
+    o:['Morrison Formation','Hell Creek Formation','Dinosaur Park Formation','Kayenta Formation'],
+    a:1, ex:'🏜️ Hell Creek Formation은 몬태나·다코타·와이오밍에 걸친 Maastrichtian 지층으로, K-Pg 경계 바로 아래에 위치해요. Morrison은 쥐라기(Allosaurus·Stegosaurus 산지), Dinosaur Park은 캐나다 Campanian 지층이랍니다.' },
+
+  { id:'x10', diff:4,
+    q:'Spinosaurus의 등에 솟은 "돛"을 구성한 뼈 구조의 해부학적 명칭은?',
+    o:['늑골(rib)','신경배돌기(neural spine)','견갑극(scapular spine)','혈관궁(chevron)'],
+    a:1, ex:'🦴 돛은 등 척추의 위쪽으로 길게 뻗은 신경배돌기(neural spine)가 극단적으로 연장된 구조예요. 일부 표본에서는 2m에 달하며, 체온조절·과시·지방 저장 등 기능은 여전히 논쟁 중이랍니다.' },
+
+  { id:'x11', diff:4,
+    q:'공룡의 분류학적 정의에서 중요한 지표가 되는 "천추(sacrum)"란?',
+    o:['두개골 뒤쪽 뼈','골반에 유합된 척추뼈들','꼬리 끝 척추','턱관절 뼈'],
+    a:1, ex:'🦴 천추는 골반(장골)과 직접 유합된 척추로, 공룡(Dinosauria)을 정의하는 핵심 형질 중 하나가 "최소 3개 이상의 유합된 천추"예요. 일부 조반류는 6개 이상으로 늘어나기도 했답니다.' },
+
+  { id:'x12', diff:4,
+    q:'1965년에 거대한 앞발만 발견돼 "공포의 손"이라 불리다가 2014년에야 전신 화석이 공개된 공룡은?',
+    o:['Gigantoraptor','Deinocheirus mirificus','Therizinosaurus','Chilantaisaurus'],
+    a:1, ex:'🖐️ Deinocheirus(데이노케이루스)는 1965년 폴란드-몽골 탐사대가 몽골 Nemegt 층에서 2.4m 길이의 앞발만 발견해 반세기 동안 수수께끼였어요. 2014년에 두개골까지 포함된 전신 골격이 공개되면서 길이 11m의 거대한 오리너구리 주둥이를 가진 잡식성 오르니토미모사우루스류로 밝혀졌답니다.' },
+
+  { id:'x13', diff:4,
+    q:'공룡 깃털 색을 복원할 때 사용되는 색소 입자 "멜라노솜"에서, 검은색을 띠게 하는 종류는?',
+    o:['Phaeomelanosome','Eumelanosome','Pterin granule','Carotenoid vesicle'],
+    a:1, ex:'⚫ 길쭉한 막대 모양의 Eumelanosome은 검정~암갈색을, 공 모양의 Phaeomelanosome은 적갈색~황갈색을 내요. 현생 조류 깃털과 화석 깃털의 멜라노솜 형태를 비교해 공룡의 색 패턴을 추정한답니다.' },
+
+  { id:'x14', diff:4,
+    q:'Archaeopteryx의 모든 모식급 표본이 나온 독일의 쥐라기 후기 지층은?',
+    o:['Holzmaden Shale','Solnhofen Limestone','Posidonia Shale','Hauff Quarry'],
+    a:1, ex:'🏛️ Solnhofen Limestone(졸른호펜 석회암)은 쥐라기 Tithonian의 초세립 석회암으로, 잔잔한 석호 환경 덕에 깃털·연부조직까지 보존됐어요. Archaeopteryx 12점 남짓의 모든 표본이 여기서 나왔답니다.' },
+
+  { id:'x15', diff:4,
+    q:'마다가스카르에서 발견된 Majungasaurus가 독특한 이유는?',
+    o:['최초로 깃털이 확인된 아벨리사우루스류','동족포식(cannibalism)의 직접적 증거가 확인된 드문 공룡','유일하게 네발 보행한 수각류','알을 품는 자세로 발견된 최초 사례'],
+    a:1, ex:'🦖 2003년 연구에서 Majungasaurus 뼈에 같은 종의 이빨 자국이 확인돼, 공룡 동족포식의 가장 명확한 증거로 인정받았어요. Abelisauridae(아벨리사우루스과)에 속하며, 짧은 주둥이와 퇴화된 앞다리가 특징이랍니다.' },
 ];
 
 /* ============================================================ */
@@ -584,6 +665,7 @@ const DIFF_META = {
   1:{ label:'⭐ 쉬움',       cls:'diff-easy',   color:'#2d8a45', emoji:'🦕' },
   2:{ label:'⭐⭐ 보통',     cls:'diff-medium',  color:'#e08010', emoji:'🌿' },
   3:{ label:'⭐⭐⭐ 어려움', cls:'diff-hard',    color:'#c0522a', emoji:'🦖' },
+  4:{ label:'💀 매니아',     cls:'diff-extreme', color:'#a040c0', emoji:'💀' },
 };
 
 const RANKS = [
@@ -603,7 +685,11 @@ let usedIds=new Set(), history=[], activeQ=null;
 
 /* ── utils ── */
 function pickQuestion(diff) {
-  const order = [diff, diff<3?diff+1:diff-1, diff===2?1:2];
+  const order = [diff];
+  for (let step=1; step<=3; step++) {
+    if (diff-step>=1) order.push(diff-step);
+    if (diff+step<=4) order.push(diff+step);
+  }
   for (const d of order) {
     const pool = BANK.filter(q=>q.diff===d&&!usedIds.has(q.id));
     if (pool.length) return pool[Math.floor(Math.random()*pool.length)];
@@ -724,7 +810,7 @@ function selectAnswer(chosen, btn) {
   // ADAPTIVE: adjust next difficulty
   if (currentQ < TOTAL_Q - 1) {
     const prev = currentDiff;
-    if (isCorrect && currentDiff < 3) currentDiff++;
+    if (isCorrect && currentDiff < 4) currentDiff++;
     else if (!isCorrect && currentDiff > 1) currentDiff--;
     if (currentDiff !== prev) {
       showDiffToast(isCorrect);
@@ -810,7 +896,7 @@ function drawCertificate() {
   const today   = new Date();
   const dateStr = `${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
   const maxDiff = Math.max(...history.map(h=>h.diff));
-  const diffNote = maxDiff===3?'어려운 문제까지 도전!': maxDiff===2?'보통 난이도 도전!':'기초 탐험 완료!';
+  const diffNote = maxDiff===4?'매니아 영역까지 정복!': maxDiff===3?'어려운 문제까지 도전!': maxDiff===2?'보통 난이도 도전!':'기초 탐험 완료!';
 
   function rr(x,y,w,h,r,fill,stroke,lw=3) {
     ctx.beginPath();
